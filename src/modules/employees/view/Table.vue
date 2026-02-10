@@ -76,6 +76,7 @@ defineEmits(["edit", "delete"]);
 
 th {
   background-color: #f5f5f5;
+  color:  #000000;
   text-align: center;
   padding: 12px 20px;
   font-weight: 600;
