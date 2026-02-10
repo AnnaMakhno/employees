@@ -1,5 +1,33 @@
 # Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Employee Management App
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Приложение для управления списком сотрудников с возможностью добавления, редактирования и удаления. Реализовано на **Vue 3** с Composition API.
+
+## Функциональность
+
+- Список сотрудников в таблице.
+- Добавление нового сотрудника через модальное окно.
+- Редактирование и удаление сотрудников.
+- Валидация полей формы: имя, фамилия, возраст, стаж, адрес.
+
+## Установка и запуск
+
+```bash
+# Клонируем проект
+git clone <url_репозитория>
+cd <папка_проекта>
+
+# Устанавливаем зависимости
+npm install
+
+# Запуск в режиме разработки
+npm run dev
+
+Откройте приложение в браузере по адресу: http://localhost:5173
+
+## Использование
+
+- Нажмите + чтобы добавить нового сотрудника.
+- Кликните ✎ для редактирования.
+- Кликните 🗑 для удаления.
