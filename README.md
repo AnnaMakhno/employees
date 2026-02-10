@@ -25,6 +25,7 @@ npm install
 npm run dev
 
 Откройте приложение в браузере по адресу: http://localhost:5173
+bash```
 
 ## Использование
 
