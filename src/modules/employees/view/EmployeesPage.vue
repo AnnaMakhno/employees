@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import Table from "../components/employees/Table.vue";
-import EmployeeForm from "../components/employees/EmployeeForm.vue";
-import { useEmployees } from "../composables/useEmployees";
+import Table from "./Table.vue";
+import EmployeeForm from "./EmployeeForm.vue";
+import { useEmployees } from "../controller/useEmployees";
+
+/**
+ * Подключаем хук useEmployees для управления списком сотрудников.
+ * - employees: массив сотрудников
+ * - selectedEmployee: выбранный для редактирования сотрудник
+ * - isModalOpen: состояние модального окна
+ * - openAddModal / openEditModal / closeModal: методы управления модальным окном
+ * - submitEmployee / deleteEmployee: методы для сотрудников
+ */
 
 const {
   employees,
@@ -17,15 +26,18 @@ const {
 
 <template>
   <div>
+    <!-- Заголовок страницы с кнопкой добавления нового сотрудника -->
     <div class="header">
       <h1>Сотрудники</h1>
       <button class="add-btn" @click="openAddModal">+</button>
     </div>
+    <!-- Таблица сотрудников -->
     <Table
       :employees="employees"
       @edit="openEditModal"
       @delete="deleteEmployee"
     />
+    <!-- Модальное окно формы сотрудника -->
     <EmployeeForm
       v-if="isModalOpen"
       :employee="selectedEmployee"
@@ -36,6 +48,7 @@ const {
 </template>
 
 <style scoped>
+/* Стили страницы сотрудников */
 .employees-page {
   display: flex;
   flex-direction: column;

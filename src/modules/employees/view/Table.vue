@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import type { Employee } from "../../models/employees";
+import type { Employee } from "../model/types";
 import EmployeeInfo from "./EmployeeInfo.vue";
 
+/**
+ * Props:
+ * - employees: массив сотрудников для отображения
+ * Emits:
+ * - "edit" — событие редактирования сотрудника
+ * - "delete" — событие удаления сотрудника
+ */
 
 defineProps<{
   employees: Employee[];
@@ -22,13 +29,12 @@ defineEmits(["edit", "delete"]);
             <th>Адрес</th>
             <th>Опыт</th>
             <th></th>
-            <!-- для Edit -->
             <th></th>
-            <!-- для Delete -->
           </tr>
         </thead>
 
         <tbody>
+          <!-- Перебираем сотрудников и отображаем через компонент EmployeeInfo -->
           <EmployeeInfo
             v-for="employee in employees"
             :key="employee.id"
@@ -43,6 +49,7 @@ defineEmits(["edit", "delete"]);
 </template>
 
 <style scoped>
+/* Стили таблицы сотрудников */
 .table-container {
   display: flex;
   flex-direction: column;
@@ -50,8 +57,8 @@ defineEmits(["edit", "delete"]);
 }
 
 .table-body-wrapper {
-  max-height: 80vh; /* высота для прокрутки */
-  overflow-y: auto; /* вертикальный скролл */
+  max-height: 80vh; 
+  overflow-y: auto; 
 }
 
 .table-body-wrapper table {

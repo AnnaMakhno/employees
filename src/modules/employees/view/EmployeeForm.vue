@@ -1,17 +1,35 @@
 <script setup lang="ts">
-import type { Employee } from "../../models/employees";
-import { useEmployeeForm } from "../../composables/useEmployeeForm";
+import type { Employee } from "../model/types";
+import { useEmployeeForm } from "../controller/useEmployeeForm";
+
+/**
+ * Props:
+ * - employee: сотрудник для редактирования, null - создание нового
+ */
 
 const props = defineProps<{
   employee?: Employee | null;
 }>();
+
+/**
+ * События, которые компонент может эмитить:
+ * - "close" — закрытие модального окна
+ * - "submit" — отправка данных формы
+ */
 
 const emit = defineEmits<{
   (e: "close"): void;
   (e: "submit", employee: Omit<Employee, "id">): void;
 }>();
 
+// Подключаем хук формы
 const { form, errors, isFormValid, hints } = useEmployeeForm(props.employee);
+
+/**
+ * Обработка отправки формы:
+ * - проверяем валидность
+ * - вызываем submit и close
+ */
 
 function submitForm() {
   if (!isFormValid.value) return;
@@ -27,6 +45,7 @@ function submitForm() {
         {{ employee ? "Редактировать сотрудника" : "Добавить сотрудника" }}
       </h2>
 
+      <!-- Поля формы -->
       <div class="field">
         <label for="name">Имя</label>
         <input
@@ -87,6 +106,7 @@ function submitForm() {
         />
       </div>
 
+      <!-- Кнопки действий -->
       <div class="actions">
         <button class="cancel-btn" @click="$emit('close')">Отмена</button>
         <button class="submit-btn" :disabled="!isFormValid" @click="submitForm">
@@ -98,6 +118,7 @@ function submitForm() {
 </template>
 
 <style scoped>
+/* Стили модального окна, полей и кнопок */
 .modal-backdrop {
   padding: 20px;
   position: fixed;

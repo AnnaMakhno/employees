@@ -1,14 +1,26 @@
 <script setup lang="ts">
-import type { Employee } from "../../models/employees";
-import EditIcon from '../../assets/EditIcon.svg';
-import DeleteIcon from '../../assets/DeleteIcon.svg';
+import type { Employee } from "../model/types";
+import EditIcon from "../../../assets/EditIcon.svg";
+import DeleteIcon from "../../../assets/DeleteIcon.svg";
+
+/**
+ * Props:
+ * - employee: сотрудник, данные которого отображаются в строке таблицы
+ */
 
 defineProps<{
   employee: Employee;
 }>();
+
+/**
+ * События:
+ * - "edit" — редактирование сотрудника
+ * - "delete" — удаление сотрудника
+ */
+
 const emit = defineEmits<{
   (e: "edit", employee: Employee): void;
-  (e: "delete", employeeId: number): void;
+  (e: "delete", employeeId: string): void;
 }>();
 </script>
 
@@ -30,24 +42,28 @@ const emit = defineEmits<{
       {{ employee.experience }}
     </td>
     <td class="employee-item">
-      <button @click="emit('edit', employee)"> <EditIcon class="edit-icon"/></button>
+      <button @click="emit('edit', employee)">
+        <EditIcon class="edit-icon" />
+      </button>
     </td>
     <td class="employee-item">
-      <button @click="emit('delete', employee.id)"><DeleteIcon class="delete-icon"/></button>
+      <button @click="emit('delete', employee.id)">
+        <DeleteIcon class="delete-icon" />
+      </button>
     </td>
   </tr>
 </template>
 
 <style scoped>
+/* Стили для строки таблицы сотрудников и кнопок */
 .employee-item {
   padding: 12px 20px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* ... если текст не помещается */
 }
 
 .address-cell {
-  max-width: 200px; /* подстраиваем ширину под дизайн */
+  max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* добавляет ... если не помещается */
@@ -70,10 +86,9 @@ const emit = defineEmits<{
   height: 25px;
 }
 
-.delete-icon{
-    width: 30px;
+.delete-icon {
+  width: 30px;
   height: 30px;
-
 }
 
 button:hover {
