@@ -13,14 +13,15 @@
 
 ```bash
 # Клонируем проект
-git clone <url_репозитория>
-cd <папка_проекта>
+git clone https://github.com/AnnaMakhno/employees.git
+cd empliyees
 
 # Устанавливаем зависимости
 npm install
 
 # Запуск в режиме разработки
 npm run dev
+
 ```
 
 Откройте приложение в браузере по адресу: http://localhost:5173
