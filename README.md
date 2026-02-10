@@ -1,5 +1,3 @@
-# Vue 3 + TypeScript + Vite
-
 # Employee Management App
 
 Приложение для управления списком сотрудников с возможностью добавления, редактирования и удаления. Реализовано на **Vue 3** с Composition API.
@@ -25,7 +23,7 @@ npm install
 npm run dev
 
 Откройте приложение в браузере по адресу: http://localhost:5173
-bash```
+```
 
 ## Использование
 
